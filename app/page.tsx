@@ -1,65 +1,336 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+
+type Game = { id: string; label: string };
+
+type Source = { section: string; id: string; content: string };
+
+type Message = {
+  role: "user" | "assistant";
+  content: string;
+  sources?: Source[];
+  error?: boolean;
+};
+
+const STARTERS: Record<string, string[]> = {
+  nemesis: [
+    "What happens when two noise tokens are in the same room?",
+    "How does the Intruder attack work?",
+    "When can I use a card from my hand?",
+    "What triggers an Intruder appearance?",
+  ],
+  seti: [
+    "How does the solar system rotate?",
+    "How do I gain income?",
+    "When are alien species revealed?",
+    "How does scoring work at the end of the game?",
+  ],
+};
+
+// Minimal markdown renderer — handles bold, italic, inline code, headings, and lists
+function MarkdownText({ text }: { text: string }) {
+  const lines = text.split("\n");
+  const elements: React.ReactNode[] = [];
+  let i = 0;
+
+  function renderInline(raw: string): React.ReactNode[] {
+    const parts: React.ReactNode[] = [];
+    const re = /(\*\*(.+?)\*\*|\*(.+?)\*|`(.+?)`)/g;
+    let last = 0, m: RegExpExecArray | null;
+    let key = 0;
+    while ((m = re.exec(raw)) !== null) {
+      if (m.index > last) parts.push(raw.slice(last, m.index));
+      if (m[2]) parts.push(<strong key={key++}>{m[2]}</strong>);
+      else if (m[3]) parts.push(<em key={key++}>{m[3]}</em>);
+      else if (m[4]) parts.push(<code key={key++} className="bg-gray-200 text-gray-800 px-1 rounded text-xs font-mono">{m[4]}</code>);
+      last = m.index + m[0].length;
+    }
+    if (last < raw.length) parts.push(raw.slice(last));
+    return parts;
+  }
+
+  while (i < lines.length) {
+    const line = lines[i];
+
+    if (/^#{1,3} /.test(line)) {
+      const level = line.match(/^(#+)/)?.[1].length ?? 1;
+      const content = line.replace(/^#+\s*/, "");
+      const Tag = `h${Math.min(level + 2, 6)}` as "h3" | "h4" | "h5" | "h6";
+      elements.push(<Tag key={i} className="font-semibold mt-2 mb-0.5">{renderInline(content)}</Tag>);
+    } else if (/^[-*] /.test(line)) {
+      const items: React.ReactNode[] = [];
+      while (i < lines.length && /^[-*] /.test(lines[i])) {
+        items.push(<li key={i}>{renderInline(lines[i].replace(/^[-*] /, ""))}</li>);
+        i++;
+      }
+      elements.push(<ul key={`ul-${i}`} className="list-disc list-inside space-y-0.5 my-1">{items}</ul>);
+      continue;
+    } else if (/^\d+\. /.test(line)) {
+      const items: React.ReactNode[] = [];
+      while (i < lines.length && /^\d+\. /.test(lines[i])) {
+        items.push(<li key={i}>{renderInline(lines[i].replace(/^\d+\. /, ""))}</li>);
+        i++;
+      }
+      elements.push(<ol key={`ol-${i}`} className="list-decimal list-inside space-y-0.5 my-1">{items}</ol>);
+      continue;
+    } else if (line.trim() === "") {
+      elements.push(<br key={i} />);
+    } else {
+      elements.push(<p key={i} className="mb-0.5">{renderInline(line)}</p>);
+    }
+    i++;
+  }
+
+  return <div className="space-y-0.5">{elements}</div>;
+}
 
 export default function Home() {
+  const [games, setGames] = useState<Game[]>([]);
+  const [game, setGame] = useState("");
+  const [input, setInput] = useState("");
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [expandedSources, setExpandedSources] = useState<Record<number, boolean>>({});
+  const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    fetch("/api/games")
+      .then((r) => r.json())
+      .then(({ games }: { games: Game[] }) => {
+        setGames(games);
+        if (games.length > 0) setGame(games[0].id);
+      });
+  }, []);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, loading]);
+
+  function copyAnswer(idx: number, content: string) {
+    navigator.clipboard.writeText(content).then(() => {
+      setCopiedIdx(idx);
+      setTimeout(() => setCopiedIdx(null), 2000);
+    });
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const question = input.trim();
+    if (!question || loading) return;
+
+    const userMsg: Message = { role: "user", content: question };
+    setMessages((prev) => [...prev, userMsg]);
+    setInput("");
+    setLoading(true);
+
+    try {
+      const history = messages
+        .filter((m) => !m.error)
+        .map((m) => ({ role: m.role, content: m.content }));
+
+      const res = await fetch("/api/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question, game, history }),
+      });
+
+      if (!res.ok || !res.body) {
+        const data = await res.json().catch(() => ({}));
+        setMessages((prev) => [
+          ...prev,
+          { role: "assistant", content: data.error ?? "Something went wrong.", error: true },
+        ]);
+        return;
+      }
+
+      setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() ?? "";
+
+        for (const line of lines) {
+          if (!line.trim()) continue;
+          let event: { type: string; data?: Source[]; text?: string; message?: string };
+          try { event = JSON.parse(line); } catch { continue; }
+
+          if (event.type === "sources") {
+            setMessages((prev) => {
+              const updated = [...prev];
+              updated[updated.length - 1] = { ...updated[updated.length - 1], sources: event.data };
+              return updated;
+            });
+          } else if (event.type === "delta") {
+            setMessages((prev) => {
+              const updated = [...prev];
+              updated[updated.length - 1] = {
+                ...updated[updated.length - 1],
+                content: updated[updated.length - 1].content + (event.text ?? ""),
+              };
+              return updated;
+            });
+          } else if (event.type === "error") {
+            setMessages((prev) => {
+              const updated = [...prev];
+              updated[updated.length - 1] = {
+                role: "assistant",
+                content: event.message ?? "Something went wrong.",
+                error: true,
+              };
+              return updated;
+            });
+          }
+        }
+      }
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: "Network error. Please try again.", error: true },
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const gameLabel = games.find((g) => g.id === game)?.label ?? game;
+  const starters = STARTERS[game] ?? [];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="flex flex-col h-full min-h-screen bg-gray-50 text-gray-900 font-sans">
+      {/* Header */}
+      <header className="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-gray-200 bg-white">
+        <div>
+          <h1 className="text-lg font-semibold tracking-tight">Board Game AI Judge</h1>
+          <p className="text-xs text-gray-400 mt-0.5 hidden sm:block">Rules questions answered from the rulebook — no hallucination.</p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        <select
+          value={game}
+          onChange={(e) => { setGame(e.target.value); setMessages([]); setExpandedSources({}); }}
+          className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
+        >
+          {games.map((g) => (
+            <option key={g.id} value={g.id}>{g.label}</option>
+          ))}
+        </select>
+      </header>
+
+      {/* Messages */}
+      <main className="flex-1 overflow-y-auto px-3 sm:px-4 py-6 space-y-6 max-w-3xl w-full mx-auto">
+        {messages.length === 0 && (
+          <div className="text-center text-gray-400 mt-16 text-sm">
+            <p className="text-2xl mb-3">🎲</p>
+            <p>Ask a rules question about <span className="text-gray-700 font-medium">{gameLabel}</span>.</p>
+            <p className="mt-1 mb-6">Answers are grounded in the rulebook only.</p>
+            {starters.length > 0 && (
+              <div className="flex flex-col gap-2 max-w-md mx-auto text-left">
+                {starters.map((s) => (
+                  <button
+                    key={s}
+                    onClick={() => { setInput(s); }}
+                    className="text-left text-xs text-gray-500 border border-gray-200 rounded-xl px-4 py-2.5 hover:border-gray-400 hover:text-gray-700 transition-colors bg-white"
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {messages.map((msg, i) => (
+          <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+            <div
+              className={`w-full sm:max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                msg.role === "user"
+                  ? "bg-gray-800 text-white ml-8 sm:ml-0"
+                  : msg.error
+                  ? "bg-red-50 border border-red-200 text-red-700"
+                  : "bg-white border border-gray-200 text-gray-800"
+              }`}
+            >
+              {msg.role === "assistant" && !msg.error ? (
+                <MarkdownText text={msg.content} />
+              ) : (
+                <p className="whitespace-pre-wrap">{msg.content}</p>
+              )}
+
+              {/* Copy button */}
+              {msg.role === "assistant" && !msg.error && msg.content && (
+                <button
+                  onClick={() => copyAnswer(i, msg.content)}
+                  className="mt-2 text-xs text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  {copiedIdx === i ? "Copied!" : "Copy"}
+                </button>
+              )}
+
+              {/* Sources */}
+              {msg.sources && msg.sources.length > 0 && (
+                <div className="mt-3 pt-3 border-t border-gray-200">
+                  <button
+                    onClick={() => setExpandedSources((prev) => ({ ...prev, [i]: !prev[i] }))}
+                    className="text-xs text-gray-400 hover:text-gray-600 transition-colors flex items-center gap-1"
+                  >
+                    <span>{expandedSources[i] ? "▾" : "▸"}</span>
+                    <span>{msg.sources.length} rule{msg.sources.length !== 1 ? "s" : ""} checked</span>
+                  </button>
+                  {expandedSources[i] && (
+                    <ul className="mt-2 space-y-2">
+                      {msg.sources.map((s) => (
+                        <li key={s.id} className="text-xs border border-gray-200 rounded-lg p-2 bg-gray-50">
+                          <p className="text-gray-600 font-medium mb-1">{s.section}</p>
+                          <p className="text-gray-500 leading-relaxed">{s.content}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+
+        {loading && (
+          <div className="flex justify-start">
+            <div className="bg-white border border-gray-200 rounded-2xl px-4 py-3 text-sm text-gray-400">
+              <span className="animate-pulse">Checking rulebook...</span>
+            </div>
+          </div>
+        )}
+
+        <div ref={bottomRef} />
       </main>
+
+      {/* Input */}
+      <footer className="border-t border-gray-200 bg-white px-3 sm:px-4 py-3 sm:py-4">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-3xl mx-auto">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Ask a rules question…"
+            disabled={loading}
+            className="flex-1 bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 disabled:opacity-50"
+          />
+          <button
+            type="submit"
+            disabled={loading || input.trim() === ""}
+            className="bg-gray-900 text-white font-medium text-sm rounded-xl px-5 py-3 hover:bg-gray-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            Ask
+          </button>
+        </form>
+      </footer>
     </div>
   );
 }
