@@ -1,0 +1,318 @@
+{
+  "game": "orloj",
+  "title": "Orloj",
+  "chunks": [
+    {
+      "id": "orloj-001",
+      "section": "Introduction",
+      "content": "From the heart of Prague's Old Town, the ancient Astronomical Clock, known as Orloj, marks the passage of time with its intricate mechanism and enigmatic figures: a marvel of medieval technology that still endures to this day. The astronomical dial, the oldest part of the clock, dates back to 1410, but the game is set around 1865, when the calendar, painted by Josef Mánes, and the apostle moving figures were added to the clock.\nFrom their workshop, each player will construct the signs of the zodiac and the calendar months, as well as the images of the apostles. With each construction, you will be one step closer to completing this masterpiece, a symbol of the city of Prague.",
+      "keywords": ["introduction", "Prague", "Orloj", "astronomical clock", "Josef Mánes", "zodiac", "calendar", "apostles", "workshop"]
+    },
+    {
+      "id": "orloj-002",
+      "section": "Components",
+      "content": "General components include: 1 Main board, 3 Plastic rotation axes (1 spare), 6 Blocked zodiac dials, 9 Common stained-glass window objectives (3 of each colour), 4 Additional actions reference cards, 1 Rotation axis, 1 Golden rooster, 1 Large final construction dial, 1 Orloj clock face, 1 Round marker, 2 Hammer discs, 18 Assistants (3 of each type), 9 Common objective bonuses (3 of each colour), 1 Astronomical dial, 1 Painter, 20 Paint pieces, 1 Moon disc, 12 Calendar sections, 24 Scrolls (red seal), 21 Workshop cards, 1 Walk of the apostles, 12 Month dials, 6 Royal scrolls (blue seal), 6 Hammer cards, 3 Orloj crowning pieces, 6 Blocked month dials, 6 Mastery stained-glass windows, 8 Initial resource cards, 2 Apostle gears, 12 Zodiac dials, 15 Gold pieces, 18 Action cards, 3 Basic turn scoring cards, 3 Advanced turn scoring cards, 1 Endgame scoring card, 5 Scoring tiles, 3 Mastery tiles, 20 Wood pieces, 20 Iron pieces, 18 Coins, 1 Bag, 3 Mastery track tiles, 3 End-of-round action tiles, 1 Conditions met tile, 1 Mastery track objective tile.\nPlayer components (per player): 1 Personal board, 1 Forge, 1 Warehouse, 3 Production cubes, 1 Hammer cube, 1 Rooster disc, 14 Workers, 1 Sculptor, 3 Mastery discs, 1 Scoring marker, 1 Personal set of 12 apostle tiles (numbered 1 to 12 with backs in the player's colour), 5 Deviation tokens.\nSolo mode components include: 1 Rotation axis, 1 Golden rooster (Josef Mánes), 2 Hammer discs.",
+      "keywords": ["components", "main board", "workers", "apostle tiles", "deviation tokens", "mastery discs", "sculptor", "forge", "warehouse", "production cubes", "hammer", "rooster", "scrolls", "workshop cards", "zodiac dials", "month dials", "stained-glass windows", "assistants"]
+    },
+    {
+      "id": "orloj-003",
+      "section": "Component Setup",
+      "content": "Walk of the Apostles: Assemble the gears onto the walk of the apostles. Fit the gears together so that in the lower position, Apostle 1 (James) is displayed on the left side and Apostle 2 (Peter) on the right side. This is the initial position for each game. Use the plastic axes included in the game for assembly.\nCommon Objective Bonuses: Take the common objective bonuses and separate them by the colour of their backs. Shuffle each colour separately and place one of each colour in the corresponding positions according to their backs. Return the rest to the box.",
+      "keywords": ["setup", "walk of the apostles", "gears", "James", "Peter", "apostle 1", "apostle 2", "plastic axes", "common objective bonuses"]
+    },
+    {
+      "id": "orloj-004",
+      "section": "Game Setup — General",
+      "content": "Take the main board and unfold it in the centre of the table. Place the Orloj clock face and the astronomical dial on the rotation axis in the centre to form the clock.\nShuffle the 21 workshop cards and place 3 of them in the designated spaces on the main board. Place the rest of the deck aside.\nTo set up the calendar, take the month dials, place them in the bag, and draw at random the number of dials indicated by the player count. In the construction area, place a blocked month dial in each space indicated by the dials drawn from the bag. Draw 1 more dial from the bag and place all extracted dials, each in its corresponding space in the calendar with their illustrated side up. Place all remaining dials still in the bag in the construction area in their corresponding spaces, but with the non-illustrated side up. Prepare the zodiac dials in the same way as the month dials.\nTake the moon disc and place it in the first position to the left of the hand inside the astronomical dial. The Orloj clock face should be placed in a random position and the astronomical dial with the hand pointing to the starting hour of the game.\nPlace the walk of the apostles with its gears above the main board. Rotate the gears until apostles 1 and 2 (James and Peter) are visible at the bottom. Randomly take one of the Orloj crowning pieces and assemble it with the walk of the apostles (note: one crowning piece is only for solo mode). Place the round marker on the leftmost space of the round track according to the number of players. Place the golden rooster on the general rooster track on the number indicated by the marker on the round track.\nShuffle the 6 mastery stained-glass windows and randomly place 3 of them at the top of the mastery tracks. Return the rest to the box.\nPlace the large final construction dial in the centre of the calendar. Place a hammer disc in the indicated position in each of the construction zones (months and zodiac).\nTake the 6 royal scrolls (blue seal), shuffle them and place 3 of them face up at the top of the mastery tracks. Return the rest to the box.\nTake the 12 calendar sections, shuffle them and place them face up in a random order to form a circle around the calendar.\nTake the scrolls (red seal) according to the number of players. In a four-player game, use all scrolls. Shuffle them to form a face-down reserve next to the main board, then reveal three or four of them (depending on whether it is a 1–2 player game or more than 2 players).\nTake the common stained-glass-window objectives and separate them by the colour of their backs. Shuffle each colour separately and place one of each colour in the corresponding positions. Return the rest to the box.\nTake the resources (gold, paint, wood, iron and coins) and place them next to the main board to form a general supply. Place the painter in the position indicated.\nTake the assistants and place them next to the board in 6 separate piles (same iconography). Each pile should have 1 assistant less than the number of players. Return remaining assistants to the box.\nFor the first game: Store the 12 calendar sections in the box and use the setup printed on the board. Use the crowning piece marked with the special symbol.",
+      "keywords": ["general setup", "main board", "workshop cards", "month dials", "zodiac dials", "calendar", "moon disc", "astronomical dial", "Orloj clock face", "walk of the apostles", "gears", "crowning piece", "rooster track", "mastery stained-glass windows", "royal scrolls", "calendar sections", "scrolls", "stained-glass-window objectives", "resources", "painter", "assistants", "round marker", "hammer disc"]
+    },
+    {
+      "id": "orloj-005",
+      "section": "Game Setup — Individual Player",
+      "content": "Each player performs these steps:\n- Place your personal board in the centre of your play area, along with your warehouse and forge.\n- Take your personal set of apostle tiles (with the back in your colour, numbered 1 to 12) and place them next to your personal board.\n- Place your 5 deviation tokens at the top of your personal board so the side that does not show the gear icon is facing up.\n- Place your rooster disc in the first position of your personal rooster track, starting from the bottom.\n- Place one cube in the bottom position of each production track and your forge track.\n- Place your workers in the indicated positions: three in the apostle panel, three in the production zone, one above each workshop card on the main board. Place the rest of your workers next to your personal board as available workers. In three- and four-player games, return one of these workers to the box (so each player has four available workers).\n- Place your sculptor next to your personal board.\n- Place one mastery disc on the lowest space of each mastery track on the main board.\n- Place your scoring marker on space 10 of the scoring track on the main board.\n- Deal each player an additional actions reference card.\nThe last player to have visited the city of Prague will be the starting player.",
+      "keywords": ["individual setup", "personal board", "warehouse", "forge", "apostle tiles", "deviation tokens", "rooster disc", "production track", "forge track", "workers", "apostle panel", "production zone", "sculptor", "mastery disc", "mastery track", "scoring marker", "scoring track", "starting player"]
+    },
+    {
+      "id": "orloj-006",
+      "section": "Game Setup — Hammers and Initial Resources",
+      "content": "Shuffle the hammer cards and reveal one more than the number of players. Then, place one initial resource card next to each of these hammer cards to form combinations. Starting with the last player and proceeding counterclockwise, each player chooses one of these combinations.\nEach player places their hammer card underneath their forge and takes the resources indicated on the initial resource card. If this card also includes apostles, take them from your personal set and place them in your warehouse.\nTake one gold from the general supply and place it in your personal reserve.\nYou may wait to take the resources from your initial resource card until just before your first turn to know the position of the astronomical dial and the Orloj clock face.\nFor the first game: instead of assembling combinations randomly, use the four preset initial setups, following the number in the lower right corner of each card. Randomly distribute one of these combinations to each player.",
+      "keywords": ["hammer cards", "initial resource cards", "setup", "forge", "resources", "apostles", "warehouse", "gold", "counterclockwise"]
+    },
+    {
+      "id": "orloj-007",
+      "section": "General Concepts — Victory Points",
+      "content": "In the game, there are two types of scoring: immediate scoring and endgame scoring (referred to as VP — Victory Points).\n- Immediate scoring: This icon indicates that scoring is resolved immediately. Move your marker forward on the scoring track as many spaces as indicated.\n- Endgame scoring: This icon indicates that scoring is resolved at the end of the game. Do not move your marker yet.\nFlip your scoring marker to indicate a score greater than 100 VP.",
+      "keywords": ["victory points", "VP", "immediate scoring", "endgame scoring", "scoring track", "scoring marker"]
+    },
+    {
+      "id": "orloj-008",
+      "section": "General Concepts — Resources",
+      "content": "In Orloj, there are different types of resources. A resource icon indicates that you take a resource from the general supply and place it in your play area. Whenever you see a resource icon crossed out, it indicates a cost you must pay by returning the indicated resource to the general supply.\nBasic resources: Paint, wood and iron are the basic resources. This icon is equivalent to one basic resource of your choice: paint, wood, or iron.\nSpecial resources: Gold is an essential resource for construction. Coins represent money and are related to the mastery tracks. You can pay a special resource (gold or coins) instead of any basic resource. However, you cannot pay with coins instead of gold or vice versa.\nResource exchange: You can exchange three identical basic resources for one gold. You may perform this exchange at any time during your turn.",
+      "keywords": ["resources", "paint", "wood", "iron", "gold", "coins", "basic resources", "special resources", "general supply", "resource exchange"]
+    },
+    {
+      "id": "orloj-009",
+      "section": "General Concepts — Deviation Tokens",
+      "content": "Clock construction is a delicate process, but sometimes you must force the mechanism and later correct it. By forcing deviation, you will be able to perform additional movements beyond the permitted limits in the game's moving parts or fulfill conditions required for certain actions. However, be careful—these tokens may also cause you to lose points during the rooster's call.\nForcing deviation: This icon indicates that you must flip one of your deviation tokens, revealing the broken gear icon. Each player has 5 deviation tokens. You cannot force a deviation if all your tokens already show the broken gear icon. Whenever a force deviation icon appears next to an action, you must first force the deviation before performing the action.\nCorrecting deviation: This icon indicates that you may flip a deviation token back, hiding the broken gear icon.",
+      "keywords": ["deviation tokens", "force deviation", "correct deviation", "broken gear", "limits", "rooster's call", "penalty"]
+    },
+    {
+      "id": "orloj-010",
+      "section": "General Concepts — Workers",
+      "content": "One of the key mechanics in Orloj is worker management. If, at any point in the game, you do not have available workers, you will be forced to pass your turn or find alternative ways to unlock or recover new workers.\nRecovering workers: When you recover workers, you may take those that were used on the clock or the calendar, making them available again. Note: Normally, workers are recovered only from the clock. Recovering them from the calendar may result in earning fewer VP at the end of the game.\n- Recover two workers icon: Recover two workers.\n- Recover indicated number icon: Recover the indicated number of workers.\nUnlocking new workers: At the beginning of the game, you start with a set number of available workers. During the game, you can unlock new workers through:\n- Apostle panel (see section: Placing an Apostle)\n- Workshop cards (see section: Expanding the Workshop)\n- Production zone upgrades (see section: Performing an Upgrade)",
+      "keywords": ["workers", "available workers", "recovering workers", "unlocking workers", "apostle panel", "workshop cards", "production zone", "upgrade", "clock", "calendar"]
+    },
+    {
+      "id": "orloj-011",
+      "section": "General Concepts — Mastery Tracks",
+      "content": "There are three mastery tracks in the game: Innovation (blue), Precision (pink) and Observation (yellow). Each corresponds to a skill that improves based on the position of your mastery disc.\n- Innovation Track (blue): Indicates the maximum rotation of the astronomical dial allowed without forcing deviation.\n- Precision Track (pink): Indicates the steps to take when a player passes their turn. Also determines the sculptor's level.\n- Observation Track (yellow): Indicates the maximum number of steps the painter can move on the calendar and the number of steps when activating the moon.\nBonuses on mastery tracks: Within the mastery tracks, there are different rewards obtained when your mastery disc reaches the indicated position:\n- Moon bonus: Gain one moon activation action.\n- Assistant bonus: Take an assistant from one of the stacks and place it in the designated space in your warehouse. You cannot have two identical assistants with the same iconography.\n- Sculptor Level indicator: Shows your sculptor's level when performing an action with them.",
+      "keywords": ["mastery tracks", "Innovation track", "blue track", "Precision track", "pink track", "Observation track", "yellow track", "mastery disc", "astronomical dial rotation", "passing", "sculptor level", "painter steps", "moon steps", "mastery bonuses", "assistant", "moon activation"]
+    },
+    {
+      "id": "orloj-012",
+      "section": "General Concepts — Clock Mechanism",
+      "content": "The clock mechanism consists of three parts:\n- Outer Ring: Printed on the main board, divided into sections.\n- Orloj clock face: Always moves counterclockwise and is divided into sections.\n- Astronomical dial: Always moves clockwise. The hand of the astronomical dial indicates the actions a player performs on their turn.\n- Moon: The moon moves clockwise along the astronomical dial and serves as the most efficient way to correct deviations.\nNote: The astronomical dial and the Orloj clock face are two independent components and rotating one does not affect the other.",
+      "keywords": ["clock mechanism", "outer ring", "Orloj clock face", "astronomical dial", "moon", "clockwise", "counterclockwise", "hand", "sections"]
+    },
+    {
+      "id": "orloj-013",
+      "section": "General Concepts — Warehouse",
+      "content": "The warehouse is where apostles and assistants go. There are two available spaces in your warehouse—one space is exclusively for storing an apostle, while the other can hold either an apostle or an assistant. You may rearrange the apostles and assistants in your warehouse at any time.",
+      "keywords": ["warehouse", "apostles", "assistants", "storage", "personal board"]
+    },
+    {
+      "id": "orloj-014",
+      "section": "Game Flow",
+      "content": "The game begins with the starting player's turn. From then on, players take their turns in a clockwise order until the game ends.\nOn each turn, you have two options:\n1. Activate the clock mechanism\n2. Pass\nRegardless of the chosen option and at any point during your turn, you may perform any number of additional actions (see section: Additional Actions).",
+      "keywords": ["game flow", "turn order", "clockwise", "activate clock mechanism", "pass", "additional actions", "starting player"]
+    },
+    {
+      "id": "orloj-015",
+      "section": "The Turn — Activating the Clock Mechanism",
+      "content": "You must have at least one available worker to choose this option. Configure the clock so that the hand of the astronomical dial points to a section of the outer ring and a section of the Orloj clock face. Follow these steps:\n1. Configure the astronomical dial: The astronomical dial always rotates clockwise and must move at least one space. The maximum movement capacity is indicated by the height of your disc on the blue mastery track. You may force deviation to rotate additional spaces—force as many deviations as the extra spaces you wish to move the astronomical dial.\n2. Configure the Orloj clock face: The Orloj clock face always rotates counterclockwise and you are not required to move it. Force as many deviations as the number of spaces you wish to rotate the dial.\n3. Place one of your available workers on the space indicated by the hand. If there is already a worker in that space, return it to the player it belongs to. You may return your own worker to yourself.\n4. Choose whether to perform the actions of the outer ring section first or the Orloj clock face section first. You cannot alternate actions between each section.",
+      "keywords": ["activate clock mechanism", "available worker", "astronomical dial", "Orloj clock face", "outer ring", "clockwise", "counterclockwise", "force deviation", "blue mastery track", "worker placement", "hand"]
+    },
+    {
+      "id": "orloj-016",
+      "section": "The Turn — Passing",
+      "content": "Instead of activating the clock mechanism, you may pass. Typically, the pass action is done to recover workers, but you may also choose to pass even if you still have available workers in your play area.\nThe pass action is linked to the height of your disc on the pink mastery track and is divided into three steps:\n1. Recover as many workers as indicated by the height of your mastery disc on the pink mastery track.\n2. Activate the moon (see section: Activating the Moon).\n3. Move the golden rooster one space to the right on the general rooster track.",
+      "keywords": ["passing", "recover workers", "pink mastery track", "Precision track", "moon", "golden rooster", "general rooster track", "pass action"]
+    },
+    {
+      "id": "orloj-017",
+      "section": "Actions — Resource Production",
+      "content": "Produce as many resources as indicated by your production track.\n- This icon indicates that you take one resource of your choice out of wood, paint or iron.\n- This icon indicates that you produce resources from a production track of your choice.\nExample: Eduardo performs the iron production action. Since his production cube is at the highest level, he produces two iron and one gold.",
+      "keywords": ["resource production", "production track", "wood", "paint", "iron", "gold", "production cube"]
+    },
+    {
+      "id": "orloj-018",
+      "section": "Actions — Mastery",
+      "content": "Move one of your discs up one space on the mastery track indicated by the icon colour.\nAlternatively, pay one coin and move one of your discs up one space on a mastery track of your choice.\nGain one point if, upon receiving a mastery, you were already on the last space of the track.",
+      "keywords": ["mastery", "mastery disc", "mastery track", "coin", "bonus point", "advance"]
+    },
+    {
+      "id": "orloj-019",
+      "section": "Actions — Taking an Apostle",
+      "content": "To give it an authentic touch, players work on the walk of the apostles — a spectacle in which, every hour, the rooster crows and the apostles appear over the Orloj in a synchronized choreography.\nTake one of the two apostles displayed at the bottom of the gears from your personal set and place it in your warehouse. Then, rotate the gears to the next position to reveal a new combination of apostles. The rotation direction of the gears is indicated at their centre.\nYou cannot take an apostle if your warehouse is full.\nBefore taking an apostle, you may choose to rotate the gears. Force as many deviation tokens as spaces you wish to rotate the gears before taking the apostle.\nRotating the gears and the rooster: Every time one of the red teeth of the left gear aligns with the red arrow, move the rooster one position to the right on the general rooster track. If it reaches the last position of the track, proceed to the rooster's call.",
+      "keywords": ["apostle", "walk of the apostles", "gears", "warehouse", "rooster", "force deviation", "rotate gears", "red teeth", "red arrow", "rooster's call"]
+    },
+    {
+      "id": "orloj-020",
+      "section": "Actions — Activating the Moon",
+      "content": "The moon moves around the astronomical dial, always in a clockwise direction. Move the moon disc as many steps as indicated by your disc on the yellow mastery track. Gain all the rewards shown in the steps taken by the moon.\nYou may also find a moon icon with a modifier, meaning you activate the moon while applying the specified modifier. For example, a +2 modifier means you move the moon 2 additional steps beyond those indicated by your yellow mastery disc.",
+      "keywords": ["moon", "moon disc", "activate moon", "astronomical dial", "clockwise", "yellow mastery track", "Observation track", "moon steps", "modifier", "rewards", "correct deviations"]
+    },
+    {
+      "id": "orloj-021",
+      "section": "Actions — Moving the Painter",
+      "content": "The painter moves around the calendar sections, always in a clockwise direction. Move the painter up to the number of steps indicated by your disc on the yellow mastery track. Once moved, choose one of the two bonuses shown in the calendar sections to the left or right of the painter. The painter must move at least one space.",
+      "keywords": ["painter", "calendar sections", "clockwise", "yellow mastery track", "Observation track", "bonus", "calendar bonus", "steps"]
+    },
+    {
+      "id": "orloj-022",
+      "section": "Actions — Performing an Upgrade",
+      "content": "Move one of your production cubes or your hammer cube one position upward.\nUnlocking workers via upgrades: In your production zone, a worker becomes available once all three production cubes reach the worker's position. Take this worker and place it next to your personal board as an available worker.\nGain one point and one gold when performing an upgrade on a production track that has already reached its final position.",
+      "keywords": ["upgrade", "production cube", "hammer cube", "production zone", "unlock worker", "worker", "gold", "bonus VP", "production track", "final position"]
+    },
+    {
+      "id": "orloj-023",
+      "section": "Actions — Scrolls",
+      "content": "Scrolls (red seal): Take one scroll from those revealed on the main board, then replace it with a new one from the pile. Scrolls can be used as additional actions in a turn. Keep this scroll in your play area, whether you have used it or not.\nRoyal Scrolls (blue seal): Score immediately, based on the condition indicated on the scroll, up to a maximum of 10 VP. Keep this scroll in your play area after scoring it. No other player can score a royal scroll that has already been scored.",
+      "keywords": ["scrolls", "red seal", "royal scrolls", "blue seal", "additional actions", "immediate scoring", "10 VP", "conditions", "play area"]
+    },
+    {
+      "id": "orloj-024",
+      "section": "Actions — Expanding the Workshop",
+      "content": "Follow these steps to expand your workshop:\n1. Choose a workshop card and pay the resources shown at the bottom of the card. The cost includes one paint plus a number of resources based on the position of the card and the type of resource indicated.\n2. If present, unlock the worker of your colour above the card and place it in your play area as a new available worker. If there is no worker, you have already purchased a card in that position.\n3. Gain the reward shown at the top of the card.\n4. Take the card and place it in your play area. If it is your first workshop card, simply place it. Otherwise, place it to the left or right of your existing workshop cards.\n5. If placing the new card completes the two halves of an apostle or construction icon, immediately perform that action.\n6. Slide the workshop cards to the right and refill the empty space with a new workshop card from the deck.",
+      "keywords": ["workshop", "workshop card", "expand workshop", "resources", "unlock worker", "reward", "apostle icon", "construction icon", "slide cards", "paint"]
+    },
+    {
+      "id": "orloj-025",
+      "section": "Actions — Constructing",
+      "content": "There are two construction zones: one for month dials and another for zodiac dials. The construction process is the same for both.\n1. Move the hammer disc clockwise, following the blue arrows, until it reaches a position adjacent to the dial you wish to construct. The maximum movement of the hammer disc is determined by the position of your cube on your hammer card. The hammer disc may move one additional space for each deviation you force. You are not required to move the hammer disc to construct.\n2. Pay the required resources shown in the row and column where the dial is located. Gain 2 VP for each resource spent.\n3. Place the constructed tile in its corresponding position on the calendar, with the illustrated side up. Place an available worker on it and gain 2 VP per dial (including this one) that is part of an adjacent group of dials with workers of your colour.\n   Note: one dial tile with no adjacent ones is considered a group of 1.\n   Note: Month dials and zodiac dials are also adjacent to each other (e.g., month XII is adjacent to month I, month XI, and the Capricorn zodiac dial).\n   Note: To build, you must have an available worker to place on the constructed dial.\n4. Gain the bonus corresponding to the calendar section where the dial was built.\n5. Gain the hammer bonus based on the position of your cube on your hammer card.",
+      "keywords": ["constructing", "construction", "month dials", "zodiac dials", "hammer disc", "blue arrows", "resources", "2 VP per resource", "adjacent dials", "workers", "calendar section bonus", "hammer bonus", "worker placement", "force deviation"]
+    },
+    {
+      "id": "orloj-026",
+      "section": "Actions — Activating the Sculptor",
+      "content": "Move your sculptor to one of the four sculptor action spaces on the main board. If another sculptor is already there, return it to its owner, who places it back in their play area. You must move the sculptor, meaning you cannot repeat the same action if your sculptor is already in that space.\nSculptor actions are graded based on the sculptor's level, which is determined by your disc's position on the pink mastery track. Some sculptor actions require forcing a deviation—you cannot perform the rest of the action unless you first force the indicated deviation.\nSculptor action levels (examples):\n- Level 1: Force one deviation and move the painter; or activate the moon without forcing a deviation. / Force one deviation and expand your workshop.\n- Level 2: Force one deviation, take one resource of your choice and expand your workshop. / Force one deviation, take one coin and move the painter; or take one coin and activate the moon with a +1 modifier. / Force one deviation and take one gold and two coins.\n- Level 3: Correct one deviation, take one gold and expand your workshop. / Correct one deviation, take one coin and move the painter; or take one coin and activate the moon with a +2 modifier. / Correct one deviation and take one gold and three coins. / Force two deviations and construct. / Force one deviation, take one resource of your choice and construct. / Correct one deviation, take one gold and construct.",
+      "keywords": ["sculptor", "sculptor actions", "sculptor level", "pink mastery track", "Precision track", "force deviation", "correct deviation", "painter", "moon", "workshop", "construct", "gold", "coins"]
+    },
+    {
+      "id": "orloj-027",
+      "section": "The Rooster's Call",
+      "content": "Every hour, the rooster flaps its wings and, after the walk of the apostles is completed, it crows to announce a new hour.\nThe rooster always moves to the right on the general rooster track for two reasons only:\n1. When rotating the apostle gears, one of the red teeth on the left gear aligns with the red arrow — move the rooster one step.\n2. When a player passes their turn — move the rooster one step.\nThe rooster's call occurs when the rooster reaches the last position on the general rooster track. The player whose turn it is takes the rooster and places it on their personal board as a reminder, then continues their turn as usual. Once their turn is over, proceed with the following steps:\n1. All players correct as many deviations as indicated by their personal rooster track. If the track indicates a value higher than the number of deviations they have, they gain 1 VP for each deviation they cannot correct.\n2. All players lose VP equal to the number of broken gear icons still showing on their deviation tokens.\n3. Move the round marker one position to the right on the round track and place the rooster back on the general rooster track, on the number indicated by the new position of the round marker. The game then continues as usual.",
+      "keywords": ["rooster's call", "golden rooster", "general rooster track", "round marker", "deviation tokens", "broken gear", "correct deviations", "VP loss", "passing", "apostle gears"]
+    },
+    {
+      "id": "orloj-028",
+      "section": "Additional Actions — Placing an Apostle",
+      "content": "These actions may be performed at any time during your turn, even if you are passing.\nTo place an apostle, it must come from your warehouse. Pay the indicated cost to place an apostle from your warehouse onto your apostle panel on your personal board. The cost is shown to the left of the row where it is placed. The apostle must match the colour of the space where you place it. Once placed, immediately receive the bonus shown below it.\nBonuses for completing a row or column in the apostle panel:\n- Completing a row: Gain 7 VP and perform a production on one of your production tracks of your choice.\n- Completing a column: Activate the moon or take an assistant.\nIn a two-player game or in solo mode, the second player to claim an objective must place their worker in the third position (the second position is not available).",
+      "keywords": ["apostle", "apostle panel", "warehouse", "personal board", "cost", "bonus", "row completion", "column completion", "7 VP", "production", "moon", "assistant", "worker placement"]
+    },
+    {
+      "id": "orloj-029",
+      "section": "Additional Actions — Spending a Coin",
+      "content": "Spend one coin to use it as any resource (except gold).\nGain one coin.",
+      "keywords": ["coin", "spend coin", "resource", "additional action"]
+    },
+    {
+      "id": "orloj-030",
+      "section": "Additional Actions — Using a Scroll",
+      "content": "Flip over a scroll tile from your play area to gain the indicated bonus. Keep the used scroll in your play area.",
+      "keywords": ["scroll", "use scroll", "flip", "bonus", "play area"]
+    },
+    {
+      "id": "orloj-031",
+      "section": "Additional Actions — Placing an Assistant",
+      "content": "Pay the resource indicated below a workshop card to place an assistant from your warehouse onto the card. Gain the bonus shown in the centre of the card. Each workshop card only has one assistant space. Assistants provide additional scoring opportunities at the end of the game. The action gained by placing an assistant on a workshop card varies by card type.",
+      "keywords": ["assistant", "workshop card", "warehouse", "resource cost", "bonus", "endgame scoring", "assistant space"]
+    },
+    {
+      "id": "orloj-032",
+      "section": "Additional Actions — Claiming an Objective",
+      "content": "Each game of Orloj has three common stained-glass-window objectives, each displaying a condition. When you fulfill the condition, you may place one of your available workers in the uppermost available position below the condition. If you are the first player to claim it, you receive the bonus shown on the bonus tile below, then flip it over. No other player will receive this bonus for claiming the same objective. Each player may claim each objective only once.\nObjectives have three reward positions for the first, second and third players to claim them, granting 8 VP, 6 VP and 4 VP at the end of the game, respectively.\nIn a two-player game or in solo mode, the second player to claim an objective must place their worker in the third position (the second position is not available).",
+      "keywords": ["objectives", "stained-glass-window objectives", "common objectives", "worker placement", "condition", "bonus tile", "8 VP", "6 VP", "4 VP", "endgame scoring", "first player", "claim objective"]
+    },
+    {
+      "id": "orloj-033",
+      "section": "Additional Actions — Exchanging Resources for Gold",
+      "content": "You may exchange three identical basic resources for one gold. You may perform this exchange at any time during your turn.",
+      "keywords": ["exchange", "resources", "gold", "three identical", "basic resources"]
+    },
+    {
+      "id": "orloj-034",
+      "section": "End of the Game",
+      "content": "The game will end after completing the round in which the last calendar dial has been constructed, or after completing the round in which the fourth rooster's call occurs. In both cases, the round is completed so that all players have played the same number of turns. At that moment, proceed with the endgame scoring.\nThe player with the highest score is the winner. In case of a tie, the winner is determined by the player who has placed the most apostles in their panel. If the tie persists, the tied players share the victory.",
+      "keywords": ["end of game", "last calendar dial", "fourth rooster's call", "endgame scoring", "winner", "tie", "apostles placed", "complete round"]
+    },
+    {
+      "id": "orloj-035",
+      "section": "End of the Game — Final Construction",
+      "content": "When a player performs the last construction of a dial in the calendar, they flip the large final construction dial, enabling a special construction. Players, on their turn, may use a construct action to pay one gold, one wood, one paint and one iron to gain 8 VP. No worker can be placed on this tile. No adjacency points or calendar section bonuses are awarded, but you still receive your hammer bonus.",
+      "keywords": ["final construction", "large final construction dial", "last dial", "8 VP", "gold", "wood", "paint", "iron", "no worker", "hammer bonus", "no adjacency"]
+    },
+    {
+      "id": "orloj-036",
+      "section": "Endgame Scoring",
+      "content": "A scoring summary is printed on the game board. Endgame scoring includes:\n1. Mastery Stained-Glass-Window Scoring: Each mastery stained-glass window is scored independently. Your mastery disc must have reached the seventh space on the corresponding mastery track to score. Each window has a Primary Scoring (for the player whose mastery disc is highest — or tied players) and a Secondary Scoring (for other players who have crossed the brick line). Score the condition as many times as you meet it; the points depend on your mastery disc height.\n2. Surplus Gold Scoring: Score 1 VP for each gold you have.\n3. Deviation Scoring: Lose 1 VP for each broken gear icon still showing on your deviation tokens at the end of the game. Note: The personal rooster track does not modify this scoring.\n4. Assistant Scoring: Score each assistant placed on your workshop cards.\n5. Common Stained-Glass-Window Objective Scoring: 8 VP for the first position, 6 VP for the second position, 4 VP for the third position on each objective.",
+      "keywords": ["endgame scoring", "mastery stained-glass windows", "surplus gold", "1 VP per gold", "deviation scoring", "broken gear", "assistant scoring", "common objectives", "8 VP", "6 VP", "4 VP", "brick line", "primary scoring", "secondary scoring"]
+    },
+    {
+      "id": "orloj-037",
+      "section": "Solo Mode — Overview",
+      "content": "In solo mode, you play against the studio of Josef Mánes, the painter of the Orloj calendar. Josef Mánes always plays second. Play your turn as usual, then perform Josef Mánes' turn. After turns 3, 6 and 9 for Josef Mánes, perform a maintenance phase. After turn 12, proceed to the endgame scoring.\nJosef Mánes does not gain or spend resources. He does not receive rewards for expanding the workshop, constructing, claiming objectives or advancing on the mastery tracks, except for taking scrolls and scoring royal scrolls upon reaching corresponding positions. He does not perform the action indicated by the hand of the astronomical dial. He only follows the instructions on his action cards. He does not force or correct deviations.",
+      "keywords": ["solo mode", "Josef Mánes", "painter", "solo opponent", "action cards", "turn order", "maintenance phase", "12 turns", "endgame scoring", "no resources", "no deviation"]
+    },
+    {
+      "id": "orloj-038",
+      "section": "Solo Mode — General Setup Changes",
+      "content": "Make the following changes to the standard game setup:\n- Take the solo mode Orloj crowning piece (marked with the special symbol) and assemble it with the walk of the apostles. Place the round marker on space 4. Place the rooster on space 4 of the general rooster track. After each rooster's call, the rooster resets to position 4. The round marker does not move.\n- Before placing the mastery stained-glass windows, royal scrolls (blue seal) and common stained-glass-window objectives, remove the ones indicated in the image.\n- Place one cube in the first position from the bottom of the forge track. Place one cube in the second position of each production track. This setup unlocks a sixth worker, making it available for solo mode.\n- Do not use a personal board for Josef Mánes. He does not use a forge, warehouse, deviation tokens, production cubes or a hammer cube. Instead, take only the 14 workers of his colour and place them in his play area as available workers.\n- Take the 3 basic turn scoring cards, shuffle them and place them face-down in the position indicated.\n- Shuffle the 3 mastery tiles of Josef Mánes and reveal one in each position shown.\n- Shuffle the 3 mastery track tiles and reveal one in each position shown.\n- Shuffle the 5 scoring tiles of Josef Mánes and reveal 3 of them. Return the remaining tiles to the box.\n- Place one mastery disc of Josef Mánes' colour on each mastery track and his scoring marker on space 10.\n- Place the conditions met tile and the mastery track objective tile in Josef Mánes' play area.\n- Take the 3 end-of-round action tiles, shuffle them and reveal one in each position shown.",
+      "keywords": ["solo setup", "crowning piece", "round marker", "rooster position 4", "Josef Mánes", "workers", "scoring cards", "mastery tiles", "mastery track tiles", "scoring tiles", "conditions met tile", "mastery track objective", "end-of-round action tiles", "sixth worker", "forge track"]
+    },
+    {
+      "id": "orloj-039",
+      "section": "Solo Mode — Josef Mánes Component Setup",
+      "content": "Replace steps 10 and 11 of the general setup with the following:\n- Take the solo mode action card deck, shuffle it and reveal 6 cards.\n- Place the zodiac and month dials shown on these cards directly onto the calendar. Then, place blocked zodiac and month dials in the construction area on the spaces indicated on the revealed cards.\n- Place the remaining dials in their corresponding spaces in the construction area with their non-illustrated side up.\n- In solo mode, there is only one set of apostles shared between the player and Josef Mánes. Separate the apostle tiles that appear on the revealed cards from the others.\n- Return the 6 revealed action cards to the box. The remaining 12 cards will be used for this solo game.\n- Place the top card of the action card deck in the first available position and reveal a scoring card, also in the first available position. Repeat this after each of Josef Mánes' turns.",
+      "keywords": ["Josef Mánes", "component setup", "action card deck", "reveal 6 cards", "zodiac dials", "month dials", "blocked dials", "shared apostles", "12 action cards", "scoring card", "solo mode"]
+    },
+    {
+      "id": "orloj-040",
+      "section": "Solo Mode — Josef Mánes' Turn",
+      "content": "All action cards have the following structure:\n- Required workers to execute the card.\n- Astronomical dial and Orloj clock face rotations.\n- First action of Josef Mánes and its reward.\n- Second action of Josef Mánes and its reward.\nJosef Mánes carries out his action card as follows:\n1. Check that he has the required available workers. If he does not, he recovers all his workers from the clock and ends his turn (then perform the component setup step and proceed with your turn).\n2. Perform the rotations indicated at the top of the action card and place one of his workers on the outer ring section the hand points to. If there is already one of your workers there, return it to your play area.\nAfter this, perform a check of Josef Mánes' actions.\nAction types:\n- Move the painter: Move the painter the indicated number of spaces clockwise.\n- Construct a zodiac or month dial: Take the dial and place it directly on the calendar with its unconstructed side up.\n- Advance on a mastery track: Move two steps up on the mastery track indicated by the icon colour.\n- Take an apostle: Take the apostle indicated on the card from the shared apostle set and place it in his play area. Then rotate the gears one position.\n- Take a workshop card: Take the rightmost or leftmost workshop card as indicated.\n- Take an assistant: Take the leftmost or rightmost available assistant as indicated.",
+      "keywords": ["Josef Mánes' turn", "action card", "required workers", "astronomical dial rotations", "Orloj clock face rotations", "painter", "construct dial", "mastery track", "apostle", "workshop card", "assistant", "outer ring", "worker placement"]
+    },
+    {
+      "id": "orloj-041",
+      "section": "Solo Mode — Josef Mánes' Action Check and Rewards",
+      "content": "If Josef Mánes successfully performs all the actions indicated on his action card, proceed with the action check:\n1. Flip over the dial(s) constructed through the action card, place one of his workers on them and gain 2 VP per dial forming a group of adjacent dials with his workers. If the action card contains two constructions, place the top one first, score, then the bottom one.\n2. Perform the first action. If able, gain the first action's reward.\n3. Perform the second action. If able, gain the second action's reward.\n4. Score the points on the basic turn scoring card, move his score marker accordingly, and move the rooster as indicated. If the rooster reaches the last position, perform the rooster's call as usual after Josef Mánes' turn. Josef Mánes does not lose points from the rooster's call.\nIf Josef Mánes does not successfully perform all actions, flip over the constructed dials, end his turn, and move on to the player's turn.\nJosef Mánes' rewards: If Josef Mánes reaches a scroll space, he takes a scroll from the face-down pile. If he reaches a royal scroll space, he scores it immediately. He does not take assistants or activate the moon when reaching these bonuses. If his mastery disc is already on the last position on a mastery track, he gains 1 VP per step he would have advanced.",
+      "keywords": ["action check", "Josef Mánes", "construct dials", "2 VP per dial", "adjacent dials", "first action", "second action", "turn scoring card", "rooster", "rooster's call", "scroll", "royal scroll", "mastery track", "rewards"]
+    },
+    {
+      "id": "orloj-042",
+      "section": "Solo Mode — End of Rounds 3, 6 and 9",
+      "content": "After completing Josef Mánes' turn in round 3, 6 or 9, follow these steps:\n1. Following the end-of-round action tile instructions, place one of his workers in the first available position of the corresponding stained-glass-window objective, regardless of whether he has met the objective condition or not. If one of your workers is already there, place his in the third position. If Josef Mánes has no available workers, first retrieve all his workers from the Orloj clock face.\n2. Move the rooster one position and perform the rooster's call if necessary.\n3. Check the position of Josef Mánes' mastery disc for the mastery track indicated on the mastery track objective tile. If it is lower than the value indicated, flip the scoring tile to its 0 VP side. If the mastery disc is the same or higher, do not flip the tile. Note: The first space from the bottom is considered space 0.\n4. Receive the mastery bonuses indicated on the mastery tiles (two masteries for basic level; three masteries for medium and advanced levels).\n5. Flip the mastery track tile and the end-of-round action tile, revealing the hourglass icon.\n6. Discard the three action cards and shuffle the turn scoring cards. Remove the three visible scrolls from the main board and reveal new ones.\n7. Perform the component setup step and move on to your next turn.",
+      "keywords": ["end of round", "round 3", "round 6", "round 9", "maintenance phase", "end-of-round action tile", "stained-glass-window objective", "rooster's call", "mastery track objective tile", "flip scoring tile", "mastery bonuses", "mastery tiles", "hourglass", "discard action cards", "scrolls"]
+    },
+    {
+      "id": "orloj-043",
+      "section": "Solo Mode — End of Solo Game and Scoring",
+      "content": "A solo game ends immediately after Josef Mánes' 12th turn. Perform your scoring as usual.\nTo win the game, you must score more points than Josef Mánes. In the case of a tie, Josef Mánes wins.\nTo score Josef Mánes, follow the steps on his endgame scoring card:\n- Exchange all resources and coins to maximize gold collection (three identical resources exchanged for one gold; coins count as any resource type). Score 1 VP for each gold.\n- Score the mastery stained-glass windows as usual.\n- Score 3 VP per assistant in his play area (6 VP in advanced mode).\n- Score the scoring tiles that were not flipped.\n- Score the common stained-glass-window objectives as usual.\nJosef Mánes can score up to 15 VP per scoring tile. These tiles show a condition and a point value for each time the condition is met.\nJosef Mánes' scoring tiles examples:\n- Score 3 VP for each month dial constructed with a worker on top (max 15 VP).\n- Score 3 VP for each zodiac dial constructed with a worker on top (max 15 VP).\n- Score 3 VP for each apostle in Josef Mánes' play area (max 15 VP).\n- Score 3 VP for each scroll or royal scroll in Josef Mánes' play area (max 15 VP).",
+      "keywords": ["solo game end", "12th turn", "Josef Mánes scoring", "endgame scoring card", "gold exchange", "mastery windows", "assistant scoring", "scoring tiles", "common objectives", "15 VP maximum", "win condition", "tie", "month dials", "zodiac dials", "apostles", "scrolls"]
+    },
+    {
+      "id": "orloj-044",
+      "section": "Solo Mode — Difficulty Levels",
+      "content": "Many solo mode components contain the advanced symbol. You can customize the difficulty by adding or flipping components with this symbol. Three suggested difficulty levels:\n- Basic Level: Play solo mode without any components marked with the advanced symbol.\n- Medium Level Option 1: Flip the mastery tiles and the mastery track objective tile to show the advanced symbol.\n- Medium Level Option 2: Use the 3 advanced turn scoring cards instead of the basic ones and flip the endgame scoring card to its advanced side.\n- Advanced Level: Combine Medium Level Option 1 and Medium Level Option 2.",
+      "keywords": ["solo difficulty", "difficulty levels", "basic level", "medium level", "advanced level", "mastery tiles", "mastery track objective tile", "advanced turn scoring cards", "endgame scoring card", "advanced symbol"]
+    },
+    {
+      "id": "orloj-045",
+      "section": "Tips for Playing Orloj",
+      "content": "Orloj is a complex game. Here are some recommendations:\n- Avoid spreading yourself across all three mastery tracks. It is more effective to focus on two. Any combination can work, but some will be stronger depending on which common stained-glass-window objectives and mastery stained-glass windows are in play.\n- Avoid completely exhausting your deviation tokens and use the moon to correct deviation when needed. Passing is not always bad as it activates the moon.\n- Before constructing, it is best to observe which bonus you want from the calendar sections and check if you have the necessary resources before evaluating all the options in the construction zone.\n- Pay attention to common stained-glass-window objectives. Being the first to claim them grants bonus rewards and additional scoring opportunities.\n- Orloj is a complex game. Try to enjoy it in your first few games before attempting to evaluate every possibility to win.",
+      "keywords": ["tips", "strategy", "mastery tracks", "deviation tokens", "moon", "passing", "construction", "calendar sections", "resources", "objectives", "bonus rewards"]
+    },
+    {
+      "id": "orloj-046",
+      "section": "Appendix — Assistants",
+      "content": "Each assistant type provides a different endgame scoring bonus. To score, an assistant must be placed on a workshop card.\n- Assistant 1: Grants 6 VP at the end of the game.\n- Assistant 2: Grants 1 VP for each upgrade in your production tracks or hammer track at the end of the game.\n- Assistant 3: Grants 4 VP for each mastery disc at Level IV on any mastery track at the end of the game.\n- Assistant 4: Grants 5 VP for each completed apostle column in your apostle panel at the end of the game.\n- Assistant 5: Grants 3 VP for each month dial with one of your workers on top at the end of the game.\n- Assistant 6: Grants 3 VP for each zodiac dial with one of your workers on top at the end of the game.",
+      "keywords": ["assistants", "endgame scoring", "workshop card", "6 VP", "upgrade VP", "mastery disc level IV", "apostle column", "month dial", "zodiac dial", "worker on top"]
+    },
+    {
+      "id": "orloj-047",
+      "section": "Appendix — Common Objective Bonuses",
+      "content": "When you are the first player to claim a common stained-glass-window objective, you receive the bonus shown on the bonus tile:\n- Take one apostle.\n- Take two coins from the general supply.\n- Take two resources of your choice from the general supply.\n- Perform an upgrade on your hammer track or one of the production tracks of your choice.\n- Move two steps up in one mastery track, or move one step up in two different mastery tracks of your choice.",
+      "keywords": ["common objective bonuses", "first player bonus", "apostle", "coins", "resources", "upgrade", "mastery track"]
+    },
+    {
+      "id": "orloj-048",
+      "section": "Appendix — Mastery Stained-Glass Windows",
+      "content": "The mastery stained-glass windows are scored at the end of the game if your mastery disc has reached the seventh space (brick line) on the corresponding mastery track. Points depend on your mastery disc height.\nWindow conditions (up to 15 VP each):\n- Score points for each scroll or royal scroll (used or unused) in your play area.\n- Score points for each apostle placed on your apostle panel.\n- Score points for each upgrade in your hammer track and production tracks.\n- Score points for each month dial with one of your workers on top.\n- Score points for each zodiac dial with one of your workers on top.\n- Score points for each workshop card in your play area.",
+      "keywords": ["mastery stained-glass windows", "seventh space", "brick line", "endgame scoring", "scrolls", "apostles", "upgrades", "month dials", "zodiac dials", "workshop cards", "15 VP maximum"]
+    },
+    {
+      "id": "orloj-049",
+      "section": "Appendix — Common Stained-Glass Window Objectives",
+      "content": "Common stained-glass-window objective conditions:\n- Have three apostles of the indicated colour placed on your apostle panel.\n- Have two assistants placed on your workshop cards.\n- Have three workshop cards in your play area.\n- Have five upgrades across your hammer track and production tracks.\n- Have one of your mastery discs at Level III.\n- Have two month dials and one zodiac dial constructed, with one of your workers on top of each.\n- Have two zodiac dials and one month dial constructed, with one of your workers on top of each.",
+      "keywords": ["common objectives", "stained-glass-window objectives", "apostle colour", "assistants", "workshop cards", "upgrades", "mastery disc Level III", "month dials", "zodiac dials", "worker on top"]
+    },
+    {
+      "id": "orloj-050",
+      "section": "Appendix — Royal Scrolls",
+      "content": "Royal scrolls (blue seal) score immediately when claimed, based on the condition on the scroll, up to a maximum of 10 VP. Royal scroll conditions:\n- Immediately score 3 VP for each scroll or royal scroll (including this one) in your play area, up to 10 VP.\n- Immediately score 2 VP for each apostle placed on your apostle panel, up to 10 VP.\n- Immediately score 2 VP for each upgrade in your hammer track and production tracks, up to 10 VP.\n- Immediately score 3 VP for each month dial with one of your workers on top, up to 10 VP.\n- Immediately score 3 VP for each zodiac dial with one of your workers on top, up to 10 VP.\n- Immediately score 3 VP for each workshop card in your play area, up to 10 VP.\n- Recover two workers.",
+      "keywords": ["royal scrolls", "blue seal", "immediate scoring", "10 VP maximum", "scrolls", "apostles", "upgrades", "month dials", "zodiac dials", "workshop cards", "recover workers"]
+    },
+    {
+      "id": "orloj-051",
+      "section": "Appendix — Hammers",
+      "content": "Each hammer grants a unique ability to each player, applied as the final step of construction. No hammer has an ability at Level I.\nHammer levels (examples):\n- Level II: Move your rooster disc up one position on your personal board. Take one gold and one point if your rooster disc is already on the last position of the track.\n- Level II: Correct one deviation.\n- Level II: Move one mastery disc of your choice up one space.\n- Level II: Take one coin from the general supply.\n- Level II: Take one apostle in the usual way.\n- Level III: Move your rooster disc up one position and gain 2 VP. Take one gold and one point if your rooster disc is already on the last position.\n- Level III: Activate the moon with a -1 modifier.\n- Level III: Move one mastery disc of your choice up one space and take one coin.\n- Level III: Take one coin and gain 2 VP.\n- Level III: Take one apostle and correct one deviation.",
+      "keywords": ["hammers", "hammer card", "hammer bonus", "hammer levels", "Level I", "Level II", "Level III", "rooster disc", "personal board", "correct deviation", "mastery disc", "coin", "apostle", "moon", "construction"]
+    },
+    {
+      "id": "orloj-052",
+      "section": "Appendix — Scrolls",
+      "content": "Scroll effects (red seal scrolls used as additional actions):\n- Take one apostle.\n- Activate the moon following the standard rules.\n- Move the painter following the standard rules.\n- Perform an upgrade.\n- Perform a construction.\n- Take one coin and move your rooster disc up one position on your personal board. Take one gold and one point if your rooster disc is already on the last position of the track.",
+      "keywords": ["scrolls", "red seal", "apostle", "moon", "painter", "upgrade", "construction", "coin", "rooster disc", "additional actions"]
+    }
+  ]
+}
