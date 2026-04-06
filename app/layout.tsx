@@ -18,6 +18,9 @@ export const metadata: Metadata = {
     template: "%s | Board Game AI Judge",
   },
   description: "Ask rules questions about board games. Answers grounded in the official rulebook — no hallucination.",
+  verification: {
+    google: "EuwpjzDGpOERlGNUBP25lf7b-QE95nIqxMB4i-Vc2CU",
+  },
 };
 
 export default function RootLayout({
