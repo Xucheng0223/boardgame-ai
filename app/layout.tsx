@@ -13,8 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Board Game AI Judge",
-  description: "Ask rules questions about board games. Answers grounded in the rulebook only.",
+  title: {
+    default: "Board Game AI Judge",
+    template: "%s | Board Game AI Judge",
+  },
+  description: "Ask rules questions about board games. Answers grounded in the official rulebook — no hallucination.",
 };
 
 export default function RootLayout({
