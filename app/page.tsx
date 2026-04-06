@@ -13,6 +13,18 @@ type Message = {
   error?: boolean;
 };
 
+type SpeechRecognitionInstance = {
+  lang: string;
+  interimResults: boolean;
+  maxAlternatives: number;
+  onstart: (() => void) | null;
+  onend: (() => void) | null;
+  onerror: (() => void) | null;
+  onresult: ((e: { results: { [i: number]: { [j: number]: { transcript: string } } } }) => void) | null;
+  start: () => void;
+  stop: () => void;
+};
+
 const STARTERS: Record<string, string[]> = {
   nemesis: [
     "What happens when two noise tokens are in the same room?",
@@ -96,7 +108,7 @@ export default function Home() {
   const [listening, setListening] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
-  const recognitionRef = useRef<InstanceType<typeof SpeechRecognition> | null>(null);
+  const recognitionRef = useRef<SpeechRecognitionInstance | null>(null);
 
   // Feature-detect Web Speech API after mount to avoid hydration mismatch
   useEffect(() => {
@@ -108,8 +120,9 @@ export default function Home() {
       recognitionRef.current?.stop();
       return;
     }
-    const SR = (window as typeof window & { webkitSpeechRecognition?: typeof SpeechRecognition })
-      .SpeechRecognition ?? (window as typeof window & { webkitSpeechRecognition?: typeof SpeechRecognition }).webkitSpeechRecognition;
+    type SRConstructor = new () => SpeechRecognitionInstance;
+    const w = window as typeof window & { SpeechRecognition?: SRConstructor; webkitSpeechRecognition?: SRConstructor };
+    const SR = w.SpeechRecognition ?? w.webkitSpeechRecognition;
     if (!SR) return;
 
     const rec = new SR();
@@ -120,7 +133,7 @@ export default function Home() {
     rec.onstart = () => setListening(true);
     rec.onend = () => setListening(false);
     rec.onerror = () => setListening(false);
-    rec.onresult = (e: SpeechRecognitionEvent) => {
+    rec.onresult = (e) => {
       const transcript = e.results[0][0].transcript;
       setInput((prev) => (prev ? prev + " " + transcript : transcript));
     };
