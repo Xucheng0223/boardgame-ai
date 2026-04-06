@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getGames } from "@/app/_lib/games";
 import ChatInterface from "@/app/_components/ChatInterface";
 
@@ -24,5 +25,15 @@ export const metadata: Metadata = {
 
 export default function Home() {
   const games = getGames();
-  return <ChatInterface games={games} />;
+  return (
+    <>
+      <ChatInterface games={games} />
+      {/* Hidden but crawlable links to per-game pages for SEO */}
+      <nav aria-label="Games" className="sr-only">
+        {games.map((g) => (
+          <Link key={g.id} href={`/game/${g.id}`}>{g.label} rules</Link>
+        ))}
+      </nav>
+    </>
+  );
 }

@@ -81,8 +81,8 @@ function MarkdownText({ text }: { text: string }) {
   return <div className="space-y-0.5">{elements}</div>;
 }
 
-export default function ChatInterface({ games }: { games: Game[] }) {
-  const [game, setGame] = useState(games[0]?.id ?? "");
+export default function ChatInterface({ games, initialGameId }: { games: Game[]; initialGameId?: string }) {
+  const [game, setGame] = useState(initialGameId ?? games[0]?.id ?? "");
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
