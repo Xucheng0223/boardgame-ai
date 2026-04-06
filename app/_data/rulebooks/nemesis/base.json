@@ -1,6 +1,12 @@
 {
   "game": "nemesis",
   "title": "Nemesis",
+  "starterQuestions": [
+    "What happens when two noise tokens are in the same room?",
+    "How does the Intruder attack work?",
+    "When can I use a card from my hand?",
+    "What triggers an Intruder appearance?"
+  ],
   "chunks": [
     {
       "id": "nemesis-001",

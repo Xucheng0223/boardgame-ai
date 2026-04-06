@@ -1,6 +1,12 @@
 {
   "game": "vantage",
   "title": "Vantage",
+  "starterQuestions": [
+    "How do I take a turn?",
+    "How does the game end?",
+    "What is a boost and when can I use it?",
+    "How does the card grid work?"
+  ],
   "chunks": [
     {
       "id": "vantage-001",

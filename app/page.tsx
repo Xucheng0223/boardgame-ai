@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 
-type Game = { id: string; label: string };
+type Game = { id: string; label: string; starterQuestions: string[] };
 
 type Source = { section: string; id: string; content: string };
 
@@ -10,6 +10,7 @@ type Message = {
   role: "user" | "assistant";
   content: string;
   sources?: Source[];
+  followUps?: string[];
   error?: boolean;
 };
 
@@ -25,20 +26,6 @@ type SpeechRecognitionInstance = {
   stop: () => void;
 };
 
-const STARTERS: Record<string, string[]> = {
-  nemesis: [
-    "What happens when two noise tokens are in the same room?",
-    "How does the Intruder attack work?",
-    "When can I use a card from my hand?",
-    "What triggers an Intruder appearance?",
-  ],
-  seti: [
-    "How does the solar system rotate?",
-    "How do I gain income?",
-    "When are alien species revealed?",
-    "How does scoring work at the end of the game?",
-  ],
-};
 
 // Minimal markdown renderer — handles bold, italic, inline code, headings, and lists
 function MarkdownText({ text }: { text: string }) {
@@ -239,6 +226,25 @@ export default function Home() {
           }
         }
       }
+      // Parse follow-up questions out of the completed answer
+      setMessages((prev) => {
+        const updated = [...prev];
+        const last = updated[updated.length - 1];
+        if (last.role !== "assistant" || last.error) return updated;
+
+        const match = last.content.match(/FOLLOW_UP_QUESTIONS:\s*(\[.*?\])/s);
+        if (match) {
+          try {
+            const followUps: string[] = JSON.parse(match[1]);
+            updated[updated.length - 1] = {
+              ...last,
+              content: last.content.replace(/\nFOLLOW_UP_QUESTIONS:.*$/s, "").trimEnd(),
+              followUps,
+            };
+          } catch { /* leave as-is if parse fails */ }
+        }
+        return updated;
+      });
     } catch {
       setMessages((prev) => [
         ...prev,
@@ -249,8 +255,9 @@ export default function Home() {
     }
   }
 
-  const gameLabel = games.find((g) => g.id === game)?.label ?? game;
-  const starters = STARTERS[game] ?? [];
+  const currentGame = games.find((g) => g.id === game);
+  const gameLabel = currentGame?.label ?? game;
+  const starters = currentGame?.starterQuestions ?? [];
 
   return (
     <div className="flex flex-col h-full min-h-screen bg-gray-50 text-gray-900 font-sans">
@@ -260,15 +267,26 @@ export default function Home() {
           <h1 className="text-lg font-semibold tracking-tight">Board Game AI Judge</h1>
           <p className="text-xs text-gray-400 mt-0.5 hidden sm:block">Rules questions answered from the rulebook — no hallucination.</p>
         </div>
-        <select
-          value={game}
-          onChange={(e) => { setGame(e.target.value); setMessages([]); setExpandedSources({}); }}
-          className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
-        >
-          {games.map((g) => (
-            <option key={g.id} value={g.id}>{g.label}</option>
-          ))}
-        </select>
+        <div className="flex items-center gap-2">
+          {messages.length > 0 && (
+            <button
+              onClick={() => { setMessages([]); setExpandedSources({}); }}
+              className="text-xs text-gray-400 hover:text-gray-600 transition-colors px-2 py-1"
+              title="Clear chat"
+            >
+              Clear
+            </button>
+          )}
+          <select
+            value={game}
+            onChange={(e) => { setGame(e.target.value); setMessages([]); setExpandedSources({}); }}
+            className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
+          >
+            {games.map((g) => (
+              <option key={g.id} value={g.id}>{g.label}</option>
+            ))}
+          </select>
+        </div>
       </header>
 
       {/* Messages */}
@@ -321,6 +339,28 @@ export default function Home() {
                 </button>
               )}
 
+              {/* Follow-up suggestions */}
+              {msg.followUps && msg.followUps.length > 0 && (
+                <div className="mt-3 pt-3 border-t border-gray-200 flex flex-wrap gap-2">
+                  {msg.followUps.map((q) => (
+                    <button
+                      key={q}
+                      onClick={() => setInput(q)}
+                      className="text-xs text-gray-500 border border-gray-200 rounded-full px-3 py-1 hover:border-gray-400 hover:text-gray-700 transition-colors bg-gray-50"
+                    >
+                      {q}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Sources loading placeholder */}
+              {msg.role === "assistant" && !msg.error && !msg.sources && msg.content === "" && (
+                <div className="mt-3 pt-3 border-t border-gray-200">
+                  <span className="text-xs text-gray-400 animate-pulse">Checking rulebook…</span>
+                </div>
+              )}
+
               {/* Sources */}
               {msg.sources && msg.sources.length > 0 && (
                 <div className="mt-3 pt-3 border-t border-gray-200">
@@ -360,35 +400,33 @@ export default function Home() {
 
       {/* Input */}
       <footer className="border-t border-gray-200 bg-white px-3 sm:px-4 py-3 sm:py-4">
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-3xl mx-auto">
-          <div className="flex flex-1 gap-2">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder={listening ? "Listening…" : "Ask a rules question…"}
+        <form onSubmit={handleSubmit} className="flex gap-2 max-w-3xl mx-auto">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={listening ? "Listening…" : "Ask a rules question…"}
+            disabled={loading}
+            className="flex-1 bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 disabled:opacity-50"
+          />
+          {speechSupported && (
+            <button
+              type="button"
+              onClick={toggleVoice}
               disabled={loading}
-              className="flex-1 bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 disabled:opacity-50"
-            />
-            {speechSupported && (
-              <button
-                type="button"
-                onClick={toggleVoice}
-                disabled={loading}
-                title={listening ? "Stop recording" : "Speak your question"}
-                className={`rounded-xl px-3 py-3 text-sm transition-colors disabled:opacity-40 disabled:cursor-not-allowed border ${
-                  listening
-                    ? "bg-red-50 border-red-300 text-red-600 animate-pulse"
-                    : "bg-white border-gray-300 text-gray-500 hover:border-gray-400 hover:text-gray-700"
-                }`}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                  <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
-                  <path d="M5.5 9.643a.75.75 0 00-1.5 0V10c0 3.06 2.29 5.585 5.25 5.954V17.5h-1.5a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5H10.5v-1.546A6.001 6.001 0 0016 10v-.357a.75.75 0 00-1.5 0V10a4.5 4.5 0 01-9 0v-.357z" />
-                </svg>
-              </button>
-            )}
-          </div>
+              title={listening ? "Stop recording" : "Speak your question"}
+              className={`rounded-xl px-3 py-3 text-sm transition-colors disabled:opacity-40 disabled:cursor-not-allowed border ${
+                listening
+                  ? "bg-red-50 border-red-300 text-red-600 animate-pulse"
+                  : "bg-white border-gray-300 text-gray-500 hover:border-gray-400 hover:text-gray-700"
+              }`}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
+                <path d="M5.5 9.643a.75.75 0 00-1.5 0V10c0 3.06 2.29 5.585 5.25 5.954V17.5h-1.5a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5H10.5v-1.546A6.001 6.001 0 0016 10v-.357a.75.75 0 00-1.5 0V10a4.5 4.5 0 01-9 0v-.357z" />
+              </svg>
+            </button>
+          )}
           <button
             type="submit"
             disabled={loading || input.trim() === ""}

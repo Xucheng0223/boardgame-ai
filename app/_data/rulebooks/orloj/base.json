@@ -1,6 +1,12 @@
 {
   "game": "orloj",
   "title": "Orloj",
+  "starterQuestions": [
+    "How does the clock mechanism work?",
+    "What happens when I pass?",
+    "How do deviation tokens affect my score?",
+    "How does the solo mode work?"
+  ],
   "chunks": [
     {
       "id": "orloj-001",

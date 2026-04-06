@@ -1,6 +1,12 @@
 {
   "source_file": "seti-rules-en.pdf",
   "game_title": "SETI",
+  "starterQuestions": [
+    "How does the solar system rotate?",
+    "How do I gain income?",
+    "When are alien species revealed?",
+    "How does scoring work at the end of the game?"
+  ],
   "document_type": "Instruction Manual",
   "language": "en",
   "page_count": 28,

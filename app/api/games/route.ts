@@ -18,19 +18,21 @@ export async function GET() {
         const stat = statSync(fullPath);
 
         if (stat.isDirectory()) {
-          // Folder-based game — get title from the first JSON file
+          // Folder-based game — get title and starterQuestions from the first JSON file
           const files = readdirSync(fullPath).filter((f) => f.endsWith(".json")).sort();
           if (files.length === 0) return null;
           const raw = JSON.parse(readFileSync(path.join(fullPath, files[0]), "utf-8"));
           const label: string = raw.title ?? raw.game_title ?? entry;
-          return { id: entry, label };
+          const starterQuestions: string[] = raw.starterQuestions ?? [];
+          return { id: entry, label, starterQuestions };
         }
 
         if (entry.endsWith(".json")) {
           const id = entry.replace(/\.json$/, "");
           const raw = JSON.parse(readFileSync(fullPath, "utf-8"));
           const label: string = raw.title ?? raw.game_title ?? id;
-          return { id, label };
+          const starterQuestions: string[] = raw.starterQuestions ?? [];
+          return { id, label, starterQuestions };
         }
       } catch {
         // skip unreadable entries

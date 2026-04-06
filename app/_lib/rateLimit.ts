@@ -5,7 +5,7 @@ type Entry = { count: number; windowStart: number };
 
 const store = new Map<string, Entry>();
 
-export function checkRateLimit(ip: string): { allowed: boolean; retryAfterMs: number } {
+export async function checkRateLimit(ip: string): Promise<{ allowed: boolean; retryAfterMs: number }> {
   const now = Date.now();
   const entry = store.get(ip);
 
@@ -15,8 +15,7 @@ export function checkRateLimit(ip: string): { allowed: boolean; retryAfterMs: nu
   }
 
   if (entry.count >= MAX_REQUESTS) {
-    const retryAfterMs = WINDOW_MS - (now - entry.windowStart);
-    return { allowed: false, retryAfterMs };
+    return { allowed: false, retryAfterMs: WINDOW_MS - (now - entry.windowStart) };
   }
 
   entry.count++;
