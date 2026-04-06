@@ -93,7 +93,41 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [expandedSources, setExpandedSources] = useState<Record<number, boolean>>({});
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
+  const [listening, setListening] = useState(false);
+  const [speechSupported, setSpeechSupported] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<InstanceType<typeof SpeechRecognition> | null>(null);
+
+  // Feature-detect Web Speech API after mount to avoid hydration mismatch
+  useEffect(() => {
+    setSpeechSupported("SpeechRecognition" in window || "webkitSpeechRecognition" in window);
+  }, []);
+
+  function toggleVoice() {
+    if (listening) {
+      recognitionRef.current?.stop();
+      return;
+    }
+    const SR = (window as typeof window & { webkitSpeechRecognition?: typeof SpeechRecognition })
+      .SpeechRecognition ?? (window as typeof window & { webkitSpeechRecognition?: typeof SpeechRecognition }).webkitSpeechRecognition;
+    if (!SR) return;
+
+    const rec = new SR();
+    rec.lang = "en-US";
+    rec.interimResults = false;
+    rec.maxAlternatives = 1;
+
+    rec.onstart = () => setListening(true);
+    rec.onend = () => setListening(false);
+    rec.onerror = () => setListening(false);
+    rec.onresult = (e: SpeechRecognitionEvent) => {
+      const transcript = e.results[0][0].transcript;
+      setInput((prev) => (prev ? prev + " " + transcript : transcript));
+    };
+
+    recognitionRef.current = rec;
+    rec.start();
+  }
 
   useEffect(() => {
     fetch("/api/games")
@@ -314,14 +348,34 @@ export default function Home() {
       {/* Input */}
       <footer className="border-t border-gray-200 bg-white px-3 sm:px-4 py-3 sm:py-4">
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-3xl mx-auto">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask a rules question…"
-            disabled={loading}
-            className="flex-1 bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 disabled:opacity-50"
-          />
+          <div className="flex flex-1 gap-2">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder={listening ? "Listening…" : "Ask a rules question…"}
+              disabled={loading}
+              className="flex-1 bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 disabled:opacity-50"
+            />
+            {speechSupported && (
+              <button
+                type="button"
+                onClick={toggleVoice}
+                disabled={loading}
+                title={listening ? "Stop recording" : "Speak your question"}
+                className={`rounded-xl px-3 py-3 text-sm transition-colors disabled:opacity-40 disabled:cursor-not-allowed border ${
+                  listening
+                    ? "bg-red-50 border-red-300 text-red-600 animate-pulse"
+                    : "bg-white border-gray-300 text-gray-500 hover:border-gray-400 hover:text-gray-700"
+                }`}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                  <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
+                  <path d="M5.5 9.643a.75.75 0 00-1.5 0V10c0 3.06 2.29 5.585 5.25 5.954V17.5h-1.5a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5H10.5v-1.546A6.001 6.001 0 0016 10v-.357a.75.75 0 00-1.5 0V10a4.5 4.5 0 01-9 0v-.357z" />
+                </svg>
+              </button>
+            )}
+          </div>
           <button
             type="submit"
             disabled={loading || input.trim() === ""}
